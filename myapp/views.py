@@ -11,6 +11,9 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework import generics
 from misc.custome_generic_view import PartialUpdateView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+
 
 # @csrf_exempt
 # @api_view
@@ -49,6 +52,9 @@ class StudentView(generics.ListCreateAPIView):
     serializer_class = StudentSerializers
     queryset = Student.objects.all()
 
+
+
+
 # class StudentView(generics.RetrieveAPIView):
 #     serializer_class = StudentSerializers
 #     queryset = Student.objects.all()
@@ -65,6 +71,7 @@ class StudentView(generics.ListCreateAPIView):
 class RetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StudentSerializers
     queryset = Student.objects.all()
+
 
 class PartialUpdateView(PartialUpdateView):
     serializer_class = StudentSerializers
